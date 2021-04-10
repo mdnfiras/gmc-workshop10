@@ -18,7 +18,7 @@ pipeline {
         stage ('Preparing base image for front end') {
             steps {
                 sh( returnStdout: false, script: """#!/bin/sh
-                    res=\$(wget -O - --user ${env.DOCKER_USER} --password ${env.DOCKER_TOKEN} ${env.REPO_API_URL}/${env.DOCKER_OWNER}/gmc-angular-front-base/tags | grep ${env.FRONT_IMG_TAG} )
+                    res=\$(curl -u ${env.DOCKER_USER}:${env.DOCKER_TOKEN} ${env.REPO_API_URL}/${env.DOCKER_OWNER}/gmc-angular-front-base/tags | grep ${env.FRONT_IMG_TAG} )
                     if [ -z "\$res" ]; then
                         echo "Did not find image with tag ${env.FRONT_IMG_TAG}"
                         docker login -u ${env.DOCKER_USER} -p ${env.DOCKER_TOKEN}
