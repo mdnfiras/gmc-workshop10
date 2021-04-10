@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 // MongoDB URL from the docker-compose file
-const dbHost = 'mongodb://mongo-svc.web-app.svc.cluster.local/test';
+const dbHost = 'mongodb://mongo-svc.web-app.svc.cluster.local/users';
 
 // Connect to mongodb
 mongoose.connect(dbHost);
@@ -26,9 +26,12 @@ const User = mongoose.model('User', userSchema);
 
 /* GET api listing. */
 router.get('/', (req, res) => {
-	const user = new User({name: "myname", age: 77});
-	user.save();
-	res.send('api works');
+	cons user = new User({name: "gg", age: 88});
+	user.save((err, user) => {
+	    if (err) return handleError(err);
+	    res.send(user);
+	});
+	res.send("api works");
 });
 
 /* GET all users. */
