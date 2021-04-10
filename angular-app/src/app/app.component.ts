@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'app works!';
 
   // Link to our api, pointing to localhost
-  API = 'http://express-svc.web-app.svc.cluster.local:3000';
+  API = 'http://192.168.5.10:30002';
 
   // Declare empty list of people
   people: any[] = [];
