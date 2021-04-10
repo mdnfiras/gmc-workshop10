@@ -4,10 +4,10 @@ const express = require('express');
 const router = express.Router();
 
 // MongoDB URL from the docker-compose file
-const dbHost = 'mongodb://mongo-svc.web-app.svc.cluster.local:27017/users';
+const dbHost = 'mongodb://root1:pass1@mongo-svc.web-app.svc.cluster.local:27017/users';
 
 // Connect to mongodb
-mongoose.connect(dbHost);
+mongoose.connect(dbHost, {useNewUrlParser: true});
 
 // create mongoose schema
 const userSchema = new mongoose.Schema({
